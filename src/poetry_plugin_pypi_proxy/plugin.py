@@ -109,7 +109,7 @@ class PypiProxyPlugin(Plugin):
             LegacyProxyRepository(
                 name=proxy_id, url=f"{proxy_url}/simple/", config=poetry.config
             ),
-            priority=Priority.DEFAULT,
+            priority=Priority.PRIMARY,
         )
 
         # If this is a publish command to Pypi, we'll silenly redirect to the proxy
