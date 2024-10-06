@@ -45,7 +45,12 @@ class MockApplication(Application):
             return
 
         manager = PluginManager(ApplicationPlugin.group)
-        manager.add_plugin(PypiProxyPlugin())
+        try:
+            # TODO: _add_plugin is used in 2.0+. Remove add_plugin when
+            # it's upgraded
+            manager.add_plugin(PypiProxyPlugin())
+        except AttributeError:
+            manager._add_plugin(PypiProxyPlugin())
 
         self._plugins_loaded = True
 
